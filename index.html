@@ -35,7 +35,6 @@
             min-height: 100vh;
         }
 
-        /* SCROLLBAR */
         ::-webkit-scrollbar {
             width: 8px;
         }
@@ -53,15 +52,15 @@
             background: var(--accent);
         }
 
-        /* HEADER */
+        /* MODERN HEADER */
         header {
-            background: rgba(30, 41, 59, 0.95);
+            background: rgba(15, 23, 42, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #334155;
+            border-bottom: 1px solid rgba(51, 65, 85, 0.5);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
         }
 
         .header-content {
@@ -71,34 +70,38 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            gap: 2rem;
         }
 
+        /* LOGO */
         .logo {
             display: flex;
             align-items: center;
             gap: 0.75rem;
             font-size: 1.5rem;
-            font-weight: 800;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            font-weight: 900;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            min-width: fit-content;
         }
 
         .logo-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            border-radius: 10px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: bold;
+            font-weight: 800;
             color: #fff;
+            font-size: 1.2rem;
         }
 
+        /* NAVIGATION */
         .nav-buttons {
             display: flex;
             gap: 0.5rem;
@@ -106,25 +109,43 @@
         }
 
         .nav-btn {
-            padding: 0.6rem 1.2rem;
+            padding: 0.65rem 1.4rem;
             border: none;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
             font-weight: 600;
             font-size: 0.95rem;
             transition: all 0.3s ease;
             background: transparent;
             color: #cbd5e1;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .nav-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(14, 165, 233, 0.1);
+            transition: left 0.3s ease;
+            z-index: -1;
         }
 
         .nav-btn:hover {
-            background: var(--dark-light);
             color: #fff;
+        }
+
+        .nav-btn:hover::before {
+            left: 0;
         }
 
         .nav-btn.active {
             background: linear-gradient(135deg, var(--primary), var(--accent));
             color: var(--dark);
+            box-shadow: 0 4px 12px rgba(14, 165, 233, 0.3);
         }
 
         /* MAIN CONTAINER */
@@ -134,7 +155,6 @@
             padding: 2rem;
         }
 
-        /* SECTIONS */
         .section {
             display: none;
         }
@@ -192,6 +212,7 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
+            letter-spacing: -1px;
         }
 
         .hero p {
@@ -199,6 +220,7 @@
             color: #cbd5e1;
             margin-bottom: 2rem;
             max-width: 600px;
+            line-height: 1.6;
         }
 
         .btn-primary {
@@ -331,7 +353,6 @@
             box-shadow: 0 0 10px rgba(14, 165, 233, 0.3);
         }
 
-        /* GRID */
         .grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -343,7 +364,6 @@
             grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
         }
 
-        /* CARD */
         .card {
             background: linear-gradient(135deg, rgba(30, 41, 59, 0.5), rgba(15, 23, 42, 0.5));
             border: 1px solid #334155;
@@ -365,14 +385,12 @@
             gap: 0.75rem;
         }
 
-        /* CHART CONTAINER */
         .chart-container {
             position: relative;
             height: 300px;
             margin: 1.5rem 0;
         }
 
-        /* TABLE */
         .table {
             width: 100%;
             border-collapse: collapse;
@@ -396,7 +414,6 @@
             background: rgba(14, 165, 233, 0.05);
         }
 
-        /* MODAL */
         .modal {
             display: none;
             position: fixed;
@@ -446,7 +463,6 @@
             flex: 1;
         }
 
-        /* BADGES */
         .badge {
             display: inline-block;
             padding: 0.4rem 0.8rem;
@@ -472,22 +488,6 @@
             color: var(--danger);
         }
 
-        /* ANIMATIONS */
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .animate-slide-up {
-            animation: slideUp 0.5s ease-out;
-        }
-
         @keyframes pulse {
             0%, 100% {
                 opacity: 1;
@@ -501,7 +501,6 @@
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
 
-        /* RESPONSIVE */
         @media (max-width: 768px) {
             .container {
                 padding: 1rem;
@@ -525,6 +524,7 @@
 
             .header-content {
                 flex-direction: column;
+                gap: 1rem;
             }
 
             .nav-buttons {
@@ -543,7 +543,6 @@
             }
         }
 
-        /* PROGRESS BAR */
         .progress-bar {
             width: 100%;
             height: 8px;
@@ -560,7 +559,6 @@
             transition: width 0.3s ease;
         }
 
-        /* ICON BUTTON */
         .icon-btn {
             background: transparent;
             border: none;
@@ -577,23 +575,11 @@
             color: var(--primary);
         }
 
-        .text-danger {
-            color: var(--danger);
-        }
+        .text-danger { color: var(--danger); }
+        .text-success { color: var(--success); }
+        .text-warning { color: var(--warning); }
+        .text-primary { color: var(--primary); }
 
-        .text-success {
-            color: var(--success);
-        }
-
-        .text-warning {
-            color: var(--warning);
-        }
-
-        .text-primary {
-            color: var(--primary);
-        }
-
-        /* INSIGHTS */
         .insight-card {
             background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(14, 165, 233, 0.05));
             border-left: 4px solid var(--secondary);
@@ -605,6 +591,7 @@
         .insight-title {
             font-weight: 700;
             margin-bottom: 0.5rem;
+            color: var(--secondary);
         }
 
         .insight-text {
@@ -612,16 +599,10 @@
             font-size: 0.95rem;
         }
 
-        /* EMPTY STATE */
         .empty-state {
             text-align: center;
             padding: 3rem 1rem;
             color: #64748b;
-        }
-
-        .empty-state-icon {
-            font-size: 4rem;
-            margin-bottom: 1rem;
         }
 
         .empty-state-text {
@@ -629,7 +610,6 @@
             margin-bottom: 1.5rem;
         }
 
-        /* UTILITY */
         .mt-1 { margin-top: 0.5rem; }
         .mt-2 { margin-top: 1rem; }
         .mt-3 { margin-top: 1.5rem; }
@@ -653,15 +633,15 @@
         <div class="header-content">
             <div class="logo">
                 <div class="logo-icon">PP</div>
-                Pin Plan 2.0
+                Pin Plan
             </div>
             <div class="nav-buttons">
-                <button class="nav-btn active" onclick="switchSection('dashboard')">📊 Dashboard</button>
-                <button class="nav-btn" onclick="switchSection('metrics')">📈 Metrics</button>
-                <button class="nav-btn" onclick="switchSection('training')">🏋️ Training</button>
-                <button class="nav-btn" onclick="switchSection('cycles')">🔄 Cycles</button>
-                <button class="nav-btn" onclick="switchSection('goals')">🎯 Goals</button>
-                <button class="nav-btn" onclick="switchSection('settings')">⚙️ Settings</button>
+                <button class="nav-btn active" onclick="switchSection('dashboard')">Dashboard</button>
+                <button class="nav-btn" onclick="switchSection('metrics')">Metrics</button>
+                <button class="nav-btn" onclick="switchSection('training')">Training</button>
+                <button class="nav-btn" onclick="switchSection('cycles')">Cycles</button>
+                <button class="nav-btn" onclick="switchSection('goals')">Goals</button>
+                <button class="nav-btn" onclick="switchSection('settings')">Settings</button>
             </div>
         </div>
     </header>
@@ -671,10 +651,10 @@
         <!-- DASHBOARD SECTION -->
         <section id="dashboard" class="section active">
             <div class="hero">
-                <h1>🔥 Ready to Crush It?</h1>
+                <h1>Ready to Crush Your Goals?</h1>
                 <p id="heroSubtitle">Track your fitness journey with Pin Plan. Log metrics, build muscle, and transform your body.</p>
                 <button class="btn-primary" onclick="openModal('metricsModal')">
-                    ➕ Log Today's Metrics
+                    Log Today's Metrics
                 </button>
             </div>
 
@@ -684,14 +664,14 @@
 
             <div class="grid grid-2">
                 <div class="card">
-                    <h2>📊 Weight Progress</h2>
+                    <h2>Weight Progress</h2>
                     <div class="chart-container">
                         <canvas id="weightChart"></canvas>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2>🔥 Calorie Intake</h2>
+                    <h2>Calorie Intake</h2>
                     <div class="chart-container">
                         <canvas id="calorieChart"></canvas>
                     </div>
@@ -700,14 +680,14 @@
 
             <div class="grid">
                 <div class="card">
-                    <h2>💪 Macro Distribution</h2>
+                    <h2>Macro Distribution</h2>
                     <div class="chart-container">
                         <canvas id="macroChart"></canvas>
                     </div>
                 </div>
 
                 <div class="card">
-                    <h2>🏃 Workout Frequency</h2>
+                    <h2>Workout Frequency</h2>
                     <div class="chart-container">
                         <canvas id="workoutChart"></canvas>
                     </div>
@@ -715,7 +695,7 @@
             </div>
 
             <div class="card">
-                <h2>💡 AI Insights</h2>
+                <h2>AI Insights</h2>
                 <div id="insightsContainer">
                     <!-- Insights loaded by JavaScript -->
                 </div>
@@ -725,10 +705,10 @@
         <!-- METRICS SECTION -->
         <section id="metrics" class="section">
             <div class="hero">
-                <h1>📊 Metrics Dashboard</h1>
+                <h1>Metrics Dashboard</h1>
                 <p>Track your nutrition, weight, and performance data</p>
                 <button class="btn-primary" onclick="openModal('metricsModal')">
-                    ➕ Add Entry
+                    Add Entry
                 </button>
             </div>
 
@@ -757,10 +737,10 @@
         <!-- TRAINING SECTION -->
         <section id="training" class="section">
             <div class="hero">
-                <h1>🏋️ Training Tracker</h1>
+                <h1>Training Tracker</h1>
                 <p>Log your workouts and track your strength progress</p>
                 <button class="btn-primary" onclick="openModal('trainingModal')">
-                    ➕ Log Workout
+                    Log Workout
                 </button>
             </div>
 
@@ -793,10 +773,10 @@
         <!-- CYCLES SECTION -->
         <section id="cycles" class="section">
             <div class="hero">
-                <h1>🔄 Training Cycles</h1>
+                <h1>Training Cycles</h1>
                 <p>Manage your training phases and nutrition targets</p>
                 <button class="btn-primary" onclick="openModal('cycleModal')">
-                    ➕ New Cycle
+                    New Cycle
                 </button>
             </div>
 
@@ -812,10 +792,10 @@
         <!-- GOALS SECTION -->
         <section id="goals" class="section">
             <div class="hero">
-                <h1>🎯 Fitness Goals</h1>
+                <h1>Fitness Goals</h1>
                 <p>Set and track your fitness objectives</p>
                 <button class="btn-primary" onclick="openModal('goalModal')">
-                    ➕ New Goal
+                    New Goal
                 </button>
             </div>
 
@@ -847,30 +827,30 @@
         <!-- SETTINGS SECTION -->
         <section id="settings" class="section">
             <div class="hero">
-                <h1>⚙️ Settings</h1>
+                <h1>Settings</h1>
                 <p>Manage your app data and preferences</p>
             </div>
 
             <div class="grid">
                 <div class="card">
-                    <h2>📤 Data Export</h2>
+                    <h2>Data Export</h2>
                     <p style="color: #cbd5e1; margin: 1rem 0;">Download all your data as a JSON file for backup or transfer.</p>
                     <button class="btn-primary" onclick="exportData()">
-                        📥 Export Data
+                        Export Data
                     </button>
                 </div>
 
                 <div class="card">
-                    <h2>📥 Data Import</h2>
+                    <h2>Data Import</h2>
                     <p style="color: #cbd5e1; margin: 1rem 0;">Restore your data from a previously exported JSON file.</p>
                     <button class="btn-primary" onclick="document.getElementById('importInput').click()">
-                        📤 Import Data
+                        Import Data
                     </button>
                     <input type="file" id="importInput" accept=".json" style="display: none;" onchange="importData(event)">
                 </div>
 
                 <div class="card">
-                    <h2>🗑️ Clear All Data</h2>
+                    <h2>Clear All Data</h2>
                     <p style="color: #cbd5e1; margin: 1rem 0;">Delete all stored data. This action cannot be undone.</p>
                     <button class="btn-secondary" style="background: var(--danger); border-color: var(--danger); color: white;" onclick="if(confirm('Are you sure? This cannot be undone.')) { clearAllData(); }">
                         Delete All
@@ -878,7 +858,7 @@
                 </div>
 
                 <div class="card">
-                    <h2>ℹ️ About Pin Plan</h2>
+                    <h2>About Pin Plan</h2>
                     <p style="color: #cbd5e1; margin: 1rem 0;">
                         <strong>Version:</strong> 2.0<br>
                         <strong>Features:</strong> Fitness tracking, cycle management, goal setting, AI insights<br>
@@ -895,7 +875,7 @@
     <!-- Metrics Modal -->
     <div id="metricsModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">📊 Log Metrics</div>
+            <div class="modal-header">Log Metrics</div>
             <div class="form-group">
                 <label>Weight (lbs)</label>
                 <input type="number" id="metricsWeight" placeholder="185">
@@ -927,10 +907,10 @@
             <div class="form-group">
                 <label>Mood</label>
                 <select id="metricsMood">
-                    <option value="excellent">😄 Excellent</option>
-                    <option value="good" selected>😊 Good</option>
-                    <option value="okay">😐 Okay</option>
-                    <option value="poor">😞 Poor</option>
+                    <option value="excellent">Excellent</option>
+                    <option value="good" selected>Good</option>
+                    <option value="okay">Okay</option>
+                    <option value="poor">Poor</option>
                 </select>
             </div>
             <div class="form-group">
@@ -938,7 +918,7 @@
                 <textarea id="metricsNotes" placeholder="Add any notes..."></textarea>
             </div>
             <div class="modal-footer">
-                <button class="btn-primary" onclick="saveMetric()">💾 Save</button>
+                <button class="btn-primary" onclick="saveMetric()">Save</button>
                 <button class="btn-secondary" onclick="closeModal('metricsModal')">Cancel</button>
             </div>
         </div>
@@ -947,7 +927,7 @@
     <!-- Training Modal -->
     <div id="trainingModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">🏋️ Log Workout</div>
+            <div class="modal-header">Log Workout</div>
             <div class="form-group">
                 <label>Date</label>
                 <input type="date" id="trainingDate">
@@ -955,10 +935,10 @@
             <div class="form-group">
                 <label>Exercise Type</label>
                 <select id="trainingType">
-                    <option value="strength">💪 Strength</option>
-                    <option value="cardio">🏃 Cardio</option>
-                    <option value="flexibility">🧘 Flexibility</option>
-                    <option value="mixed">🔀 Mixed</option>
+                    <option value="strength">Strength</option>
+                    <option value="cardio">Cardio</option>
+                    <option value="flexibility">Flexibility</option>
+                    <option value="mixed">Mixed</option>
                 </select>
             </div>
             <div class="form-group">
@@ -994,7 +974,7 @@
                 <textarea id="trainingNotes" placeholder="Add any notes..."></textarea>
             </div>
             <div class="modal-footer">
-                <button class="btn-primary" onclick="saveTraining()">💾 Save</button>
+                <button class="btn-primary" onclick="saveTraining()">Save</button>
                 <button class="btn-secondary" onclick="closeModal('trainingModal')">Cancel</button>
             </div>
         </div>
@@ -1003,7 +983,7 @@
     <!-- Cycle Modal -->
     <div id="cycleModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">🔄 New Cycle</div>
+            <div class="modal-header">New Cycle</div>
             <div class="form-group">
                 <label>Cycle Name</label>
                 <input type="text" id="cycleName" placeholder="e.g., Summer Bulk">
@@ -1011,10 +991,10 @@
             <div class="form-group">
                 <label>Type</label>
                 <select id="cycleType">
-                    <option value="bulking">📈 Bulking</option>
-                    <option value="cutting">📉 Cutting</option>
-                    <option value="maintenance" selected>⚖️ Maintenance</option>
-                    <option value="rest">😴 Rest</option>
+                    <option value="bulking">Bulking</option>
+                    <option value="cutting">Cutting</option>
+                    <option value="maintenance" selected>Maintenance</option>
+                    <option value="rest">Rest</option>
                 </select>
             </div>
             <div class="form-group">
@@ -1038,7 +1018,7 @@
                 <textarea id="cycleNotes" placeholder="Add any notes..."></textarea>
             </div>
             <div class="modal-footer">
-                <button class="btn-primary" onclick="saveCycle()">💾 Create</button>
+                <button class="btn-primary" onclick="saveCycle()">Create</button>
                 <button class="btn-secondary" onclick="closeModal('cycleModal')">Cancel</button>
             </div>
         </div>
@@ -1047,7 +1027,7 @@
     <!-- Goal Modal -->
     <div id="goalModal" class="modal">
         <div class="modal-content">
-            <div class="modal-header">🎯 New Goal</div>
+            <div class="modal-header">New Goal</div>
             <div class="form-group">
                 <label>Goal Name</label>
                 <input type="text" id="goalName" placeholder="e.g., Bench 315 lbs">
@@ -1055,10 +1035,10 @@
             <div class="form-group">
                 <label>Category</label>
                 <select id="goalCategory">
-                    <option value="weight">⚖️ Weight</option>
-                    <option value="strength">💪 Strength</option>
-                    <option value="performance">⚡ Performance</option>
-                    <option value="health">❤️ Health</option>
+                    <option value="weight">Weight</option>
+                    <option value="strength">Strength</option>
+                    <option value="performance">Performance</option>
+                    <option value="health">Health</option>
                 </select>
             </div>
             <div class="form-group">
@@ -1078,14 +1058,13 @@
                 <input type="date" id="goalDeadline">
             </div>
             <div class="modal-footer">
-                <button class="btn-primary" onclick="saveGoal()">💾 Create</button>
+                <button class="btn-primary" onclick="saveGoal()">Create</button>
                 <button class="btn-secondary" onclick="closeModal('goalModal')">Cancel</button>
             </div>
         </div>
     </div>
 
     <script>
-        // DATA MANAGEMENT
         class PinPlanApp {
             constructor() {
                 this.metrics = JSON.parse(localStorage.getItem('pinplan_metrics')) || [];
@@ -1113,7 +1092,6 @@
             }
 
             setupEventListeners() {
-                // Close modals on outside click
                 document.querySelectorAll('.modal').forEach(modal => {
                     modal.addEventListener('click', (e) => {
                         if (e.target === modal) {
@@ -1134,41 +1112,36 @@
             renderDashboard() {
                 const stats = this.getStatistics();
                 
-                // Update hero subtitle
                 const currentCycle = this.getCurrentCycle();
                 if (currentCycle) {
-                    document.getElementById('heroSubtitle').textContent = `Current Phase: ${currentCycle.name} • Target: ${currentCycle.calories} kcal/day`;
+                    document.getElementById('heroSubtitle').textContent = `Current Phase: ${currentCycle.name} | Target: ${currentCycle.calories} kcal/day`;
                 }
 
-                // Render stats
                 const statsHtml = `
                     <div class="stat-card">
-                        <div class="stat-label">🔥 Avg Calories</div>
+                        <div class="stat-label">Avg Calories</div>
                         <div class="stat-value">${Math.round(stats.avgCalories)}</div>
                         <div class="stat-unit">kcal/day</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">💪 Avg Protein</div>
+                        <div class="stat-label">Avg Protein</div>
                         <div class="stat-value">${Math.round(stats.avgProtein)}</div>
                         <div class="stat-unit">g/day</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">⚖️ Avg Weight</div>
+                        <div class="stat-label">Avg Weight</div>
                         <div class="stat-value">${stats.avgWeight.toFixed(1)}</div>
                         <div class="stat-unit">lbs</div>
                     </div>
                     <div class="stat-card">
-                        <div class="stat-label">🏃 Workouts</div>
+                        <div class="stat-label">Workouts</div>
                         <div class="stat-value">${stats.workouts}</div>
                         <div class="stat-unit">sessions</div>
                     </div>
                 `;
                 document.getElementById('statsGrid').innerHTML = statsHtml;
 
-                // Render insights
                 this.renderInsights();
-
-                // Create charts
                 this.createCharts();
             }
 
@@ -1189,7 +1162,7 @@
                             <td>${m.protein}g</td>
                             <td>${m.exercise}min</td>
                             <td>
-                                <button class="icon-btn text-danger" onclick="app.deleteMetric('${m.id}')">🗑️</button>
+                                <button class="icon-btn text-danger" onclick="app.deleteMetric('${m.id}')">Delete</button>
                             </td>
                         </tr>
                     `).join('');
@@ -1204,7 +1177,7 @@
 
                 const workoutsList = document.getElementById('workoutsList');
                 if (this.training.length === 0) {
-                    workoutsList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🏋️</div><div class="empty-state-text">No workouts logged yet</div></div>';
+                    workoutsList.innerHTML = '<div class="empty-state"><div class="empty-state-text">No workouts logged yet</div></div>';
                     return;
                 }
 
@@ -1215,12 +1188,12 @@
                             <div class="flex-between mb-2">
                                 <div>
                                     <strong>${t.name}</strong><br>
-                                    <span style="color: #94a3b8; font-size: 0.9rem;">${t.type} • ${t.date}</span>
+                                    <span style="color: #94a3b8; font-size: 0.9rem;">${t.type} | ${t.date}</span>
                                 </div>
-                                <button class="icon-btn text-danger" onclick="app.deleteTraining('${t.id}')">🗑️</button>
+                                <button class="icon-btn text-danger" onclick="app.deleteTraining('${t.id}')">Delete</button>
                             </div>
                             <div style="color: #cbd5e1; font-size: 0.95rem;">
-                                ${t.sets}x${t.reps} @ ${t.weight}lbs • ${t.duration}min • ${t.intensity}
+                                ${t.sets}x${t.reps} @ ${t.weight}lbs | ${t.duration}min | ${t.intensity}
                             </div>
                         </div>
                     `).join('');
@@ -1233,7 +1206,7 @@
                 if (currentCycle) {
                     container.innerHTML = `
                         <div style="background: linear-gradient(135deg, rgba(251, 191, 36, 0.1), rgba(14, 165, 233, 0.1)); border: 2px solid var(--secondary); border-radius: 16px; padding: 2rem; margin-bottom: 2rem;">
-                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">🎯 Active Cycle</h3>
+                            <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Active Cycle</h3>
                             <div style="font-size: 1.3rem; font-weight: 700; margin-bottom: 1rem;">${currentCycle.name}</div>
                             <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; color: #cbd5e1;">
                                 <div>
@@ -1261,7 +1234,7 @@
 
                 const cyclesList = document.getElementById('cyclesList');
                 if (this.cycles.length === 0) {
-                    cyclesList.innerHTML = '<div class="empty-state"><div class="empty-state-icon">🔄</div><div class="empty-state-text">No cycles created yet</div></div>';
+                    cyclesList.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-text">No cycles created yet</div></div>';
                     return;
                 }
 
@@ -1274,7 +1247,7 @@
                                     <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">${c.name}</h3>
                                     <span class="badge">${c.type.toUpperCase()}</span>
                                 </div>
-                                <button class="icon-btn text-danger" onclick="app.deleteCycle('${c.id}')">🗑️</button>
+                                <button class="icon-btn text-danger" onclick="app.deleteCycle('${c.id}')">Delete</button>
                             </div>
                             <div style="margin: 1rem 0; padding: 1rem 0; border-top: 1px solid #334155; border-bottom: 1px solid #334155; color: #cbd5e1;">
                                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; font-size: 0.95rem;">
@@ -1299,7 +1272,7 @@
 
                 const goalsList = document.getElementById('goalsList');
                 if (this.goals.length === 0) {
-                    goalsList.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-icon">🎯</div><div class="empty-state-text">No goals set yet</div></div>';
+                    goalsList.innerHTML = '<div class="empty-state" style="grid-column: 1 / -1;"><div class="empty-state-text">No goals set yet</div></div>';
                     return;
                 }
 
@@ -1309,7 +1282,7 @@
                         <div class="card">
                             <div class="flex-between mb-2">
                                 <h3>${g.name}</h3>
-                                <button class="icon-btn text-danger" onclick="app.deleteGoal('${g.id}')">🗑️</button>
+                                <button class="icon-btn text-danger" onclick="app.deleteGoal('${g.id}')">Delete</button>
                             </div>
                             <span class="badge">${g.category.toUpperCase()}</span>
                             <div style="margin: 1rem 0;">
@@ -1343,7 +1316,7 @@
 
                 container.innerHTML = insights.map(i => `
                     <div class="insight-card">
-                        <div class="insight-title">${i.emoji} ${i.title}</div>
+                        <div class="insight-title">${i.title}</div>
                         <div class="insight-text">${i.text}</div>
                     </div>
                 `).join('');
@@ -1355,15 +1328,13 @@
 
                 if (stats.workouts > 10) {
                     insights.push({
-                        emoji: '🔥',
-                        title: 'Consistency Champion!',
+                        title: 'Consistency Champion',
                         text: `You've logged ${stats.workouts} workouts. Keep pushing!`
                     });
                 }
 
                 if (stats.avgProtein < 100) {
                     insights.push({
-                        emoji: '💡',
                         title: 'Boost Your Protein',
                         text: `Average protein is ${Math.round(stats.avgProtein)}g. Aim for 0.8-1g per lb of bodyweight.`
                     });
@@ -1374,7 +1345,6 @@
                     const weightChange = recent[recent.length - 1].weight - recent[0].weight;
                     if (Math.abs(weightChange) > 0.5) {
                         insights.push({
-                            emoji: '📈',
                             title: 'Weight Trend',
                             text: `Your weight changed by ${weightChange > 0 ? '+' : ''}${weightChange.toFixed(1)}lbs in the last week.`
                         });
@@ -1383,7 +1353,6 @@
 
                 if (stats.avgSleep < 7) {
                     insights.push({
-                        emoji: '😴',
                         title: 'Get More Sleep',
                         text: `Average sleep is ${stats.avgSleep.toFixed(1)} hours. Aim for 7-9 hours for recovery.`
                     });
@@ -1418,7 +1387,6 @@
             }
 
             createCharts() {
-                // Weight Chart
                 if (this.metrics.length > 0) {
                     const ctx = document.getElementById('weightChart');
                     if (this.charts.weight) this.charts.weight.destroy();
@@ -1448,7 +1416,6 @@
                         }
                     });
 
-                    // Calorie Chart
                     const ctx2 = document.getElementById('calorieChart');
                     if (this.charts.calorie) this.charts.calorie.destroy();
                     
@@ -1474,7 +1441,6 @@
                         }
                     });
 
-                    // Macro Chart
                     const ctx3 = document.getElementById('macroChart');
                     if (this.charts.macro) this.charts.macro.destroy();
                     
@@ -1497,7 +1463,6 @@
                         }
                     });
 
-                    // Workout Chart
                     const ctx4 = document.getElementById('workoutChart');
                     if (this.charts.workout) this.charts.workout.destroy();
                     
@@ -1525,7 +1490,6 @@
                 }
             }
 
-            // CRUD Operations
             addMetric(data) {
                 this.metrics.push({
                     id: Date.now().toString(),
@@ -1616,10 +1580,8 @@
             }
         }
 
-        // Initialize app
         let app = new PinPlanApp();
 
-        // Global Functions
         function switchSection(sectionId) {
             document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
             document.getElementById(sectionId).classList.add('active');
@@ -1650,7 +1612,7 @@
             };
             app.addMetric(data);
             closeModal('metricsModal');
-            alert('✅ Metrics saved!');
+            alert('Metrics saved');
         }
 
         function saveTraining() {
@@ -1667,7 +1629,7 @@
             };
             app.addTraining(data);
             closeModal('trainingModal');
-            alert('✅ Workout saved!');
+            alert('Workout saved');
         }
 
         function saveCycle() {
@@ -1682,7 +1644,7 @@
             };
             app.addCycle(data);
             closeModal('cycleModal');
-            alert('✅ Cycle created!');
+            alert('Cycle created');
         }
 
         function saveGoal() {
@@ -1696,7 +1658,7 @@
             };
             app.addGoal(data);
             closeModal('goalModal');
-            alert('✅ Goal created!');
+            alert('Goal created');
         }
 
         function updateGoal(id) {
@@ -1704,7 +1666,7 @@
             const newValue = prompt(`Update ${goal.name} (current: ${goal.current} ${goal.unit}):`, goal.current);
             if (newValue !== null) {
                 app.updateGoal(id, parseFloat(newValue));
-                alert('✅ Goal updated!');
+                alert('Goal updated');
             }
         }
 
@@ -1716,7 +1678,7 @@
             a.href = url;
             a.download = `pinplan-backup-${new Date().toISOString().split('T')[0]}.json`;
             a.click();
-            alert('✅ Data exported!');
+            alert('Data exported');
         }
 
         function importData(event) {
@@ -1726,9 +1688,9 @@
                 try {
                     const data = JSON.parse(e.target.result);
                     app.import(data);
-                    alert('✅ Data imported successfully!');
+                    alert('Data imported successfully');
                 } catch (err) {
-                    alert('❌ Error importing data');
+                    alert('Error importing data');
                 }
             };
             reader.readAsText(file);
@@ -1740,7 +1702,7 @@
             app.cycles = [];
             app.goals = [];
             app.save();
-            alert('✅ All data cleared');
+            alert('All data cleared');
         }
     </script>
 </body>
