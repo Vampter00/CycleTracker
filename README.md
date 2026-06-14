@@ -1,4 +1,4 @@
-# Pin Plan 2.0 - Professional Fitness Cycle Tracker
+# Pin Plan - Professional Fitness Cycle Tracker
 
 A modern, feature-rich fitness cycle tracking application with AI diagnostics, comprehensive metrics tracking, and beautiful data visualizations.
 
