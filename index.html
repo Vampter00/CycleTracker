@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pin Plan - Cycle Tracker</title>
+    <title>Pin Plan</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
     <style>
         * {
@@ -13,16 +13,16 @@
         }
 
         :root {
-            --primary-red: #d32f2f;
-            --accent-red: #ff5252;
-            --dark-bg: #0a0a0a;
-            --panel-bg: #1a1a1a;
-            --border-color: #333333;
-            --text-primary: #e0e0e0;
-            --text-secondary: #b0b0b0;
-            --success: #4caf50;
-            --warning: #ff9800;
-            --danger: #f44336;
+            --primary-red: #00d4ff;
+            --accent-red: #00ffb3;
+            --dark-bg: #05070a;
+            --panel-bg: #0f1722;
+            --border-color: #223040;
+            --text-primary: #f5f7fa;
+            --text-secondary: #9fb0c3;
+            --success: #00ff88;
+            --warning: #ffb020;
+            --danger: #ff4d6d;
         }
 
         html {
@@ -136,6 +136,14 @@
             border: 2px solid var(--accent-red);
             box-shadow: 0 0 15px rgba(211, 47, 47, 0.4);
         }
+
+        
+.logo-image{
+width:64px;height:64px;object-fit:contain;
+filter:drop-shadow(0 0 10px rgba(0,212,255,.25)) drop-shadow(0 0 20px rgba(0,150,255,.2));
+transition:.3s;
+}
+.logo-image:hover{transform:scale(1.05);}
 
         .nav-buttons {
             display: flex;
@@ -550,7 +558,7 @@
     <header>
         <div class="header-content">
             <div class="logo">
-                <div class="logo-icon">PP</div>
+                <img src="logo.png" alt="Pin Plan Logo" class="logo-image">
                 Pin Plan Cycles
             </div>
             <div class="nav-buttons">
